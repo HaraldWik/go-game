@@ -1,12 +1,13 @@
 package types
 
 import (
-	err_ "go-game/scr/err"
-	Vec2 "go-game/scr/vector/2"
-	Vec3 "go-game/scr/vector/3"
-	Vec4 "go-game/scr/vector/4"
 	"log"
 	"reflect"
+
+	err_ "github.com/HaraldWik/go-game/scr/err"
+	Vec2 "github.com/HaraldWik/go-game/scr/vector/2"
+	Vec3 "github.com/HaraldWik/go-game/scr/vector/3"
+	Vec4 "github.com/HaraldWik/go-game/scr/vector/4"
 )
 
 func AreSameType(panicWhenFalse bool, vars ...interface{}) bool {

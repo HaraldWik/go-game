@@ -3,7 +3,7 @@ package win
 import (
 	"log"
 
-	err_ "go-game/scr/err"
+	err_ "github.com/HaraldWik/go-game/scr/err"
 
 	"github.com/veandco/go-sdl2/sdl"
 )

@@ -1,4 +1,4 @@
-module go-game
+module github.com/HaraldWik/go-game
 
 go 1.22.3
 

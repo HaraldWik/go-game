@@ -1,10 +1,11 @@
 package win
 
 import (
-	err_ "go-game/scr/err"
 	"log"
 	"runtime"
 	"syscall"
+
+	err_ "github.com/HaraldWik/go-game/scr/err"
 
 	"github.com/veandco/go-sdl2/sdl"
 )

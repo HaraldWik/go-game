@@ -1,8 +1,9 @@
 package win
 
 import (
-	err_ "go-game/scr/err"
 	"log"
+
+	err_ "github.com/HaraldWik/go-game/scr/err"
 
 	"github.com/go-gl/gl/v2.1/gl"
 	"github.com/veandco/go-sdl2/sdl"
