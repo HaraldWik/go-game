@@ -5,9 +5,9 @@ import (
 	"reflect"
 
 	err_ "github.com/HaraldWik/go-game/scr/err"
-	Vec2 "github.com/HaraldWik/go-game/scr/vector/2"
-	Vec3 "github.com/HaraldWik/go-game/scr/vector/3"
-	Vec4 "github.com/HaraldWik/go-game/scr/vector/4"
+	vec2 "github.com/HaraldWik/go-game/scr/vector/2"
+	vec3 "github.com/HaraldWik/go-game/scr/vector/3"
+	vec4 "github.com/HaraldWik/go-game/scr/vector/4"
 )
 
 func AreSameType(panicWhenFalse bool, vars ...interface{}) bool {
@@ -45,12 +45,12 @@ func GetType(variable interface{}) interface{} {
 		return float64(0)
 	case string:
 		return ""
-	case Vec2.Vector:
-		return Vec2.Vector{}
-	case Vec3.Vector:
-		return Vec3.Vector{}
-	case Vec4.Vector:
-		return Vec4.Vector{}
+	case vec2.Vector:
+		return vec2.Vector{}
+	case vec3.Vector:
+		return vec3.Vector{}
+	case vec4.Vector:
+		return vec4.Vector{}
 	default:
 		return nil
 	}

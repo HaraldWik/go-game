@@ -1,4 +1,4 @@
-package Vec4
+package vec4
 
 import "math"
 
@@ -33,7 +33,7 @@ func All(number float32) Vector {
 	}
 }
 
-//* Addition
+// *Addition
 func (origin Vector) Add(vectors ...Vector) Vector {
 	for _, vector := range vectors {
 		origin.X += vector.X
@@ -44,7 +44,7 @@ func (origin Vector) Add(vectors ...Vector) Vector {
 	return origin
 }
 
-//* Subtraction
+// *Subtraction
 func (origin Vector) Sub(vectors ...Vector) Vector {
 	for _, vector := range vectors {
 		origin.X -= vector.X
@@ -55,7 +55,7 @@ func (origin Vector) Sub(vectors ...Vector) Vector {
 	return origin
 }
 
-//* Multiplication
+// *Multiplication
 func (origin Vector) Mul(vectors ...Vector) Vector {
 	for _, vector := range vectors {
 		origin.X *= vector.X
@@ -66,7 +66,7 @@ func (origin Vector) Mul(vectors ...Vector) Vector {
 	return origin
 }
 
-//* Divition
+// *Divition
 func (origin Vector) Div(vectors ...Vector) Vector {
 	for _, vector := range vectors {
 		origin.X *= vector.X
@@ -77,7 +77,7 @@ func (origin Vector) Div(vectors ...Vector) Vector {
 	return origin
 }
 
-//* Absolut
+// *Absolut
 func (origin Vector) ABS() Vector {
 	return New(
 		float32(math.Abs(float64(origin.X))),
@@ -87,7 +87,7 @@ func (origin Vector) ABS() Vector {
 	)
 }
 
-//* Negativ
+// *Negativ
 func (origin Vector) Neg() Vector {
 	return New(
 		-float32(math.Abs(float64(origin.X))),
@@ -97,7 +97,7 @@ func (origin Vector) Neg() Vector {
 	)
 }
 
-//* Length
+// *Length
 func (origin Vector) Length() float32 {
 	return float32(math.Sqrt(
 		float64(origin.X*origin.X) +
@@ -107,7 +107,7 @@ func (origin Vector) Length() float32 {
 	)
 }
 
-//* Normalize
+// *Normalize
 func (origin Vector) Norm() Vector {
 	if origin.Length() != 0 {
 		return New(

@@ -5,7 +5,7 @@ import (
 	"syscall"
 )
 
-// * Get array of all pressed keys
+// *Get array of all pressed keys
 func GetPressedKeys() []int {
 	switch runtime.GOOS {
 	case "windows":
@@ -25,14 +25,14 @@ func GetPressedKeys() []int {
 		}
 		return pressedKeys
 	case "darwin", "linux":
-		//! No support for your OS
+		// !No support for your OS
 		return nil
 	default:
 		return nil
 	}
 }
 
-// * Is interaction
+// *Is interaction
 func IsPressed(keycode int) bool {
 	keys := GetPressedKeys()
 	for _, key := range keys {
@@ -47,7 +47,7 @@ func IsReleased(keycode int) bool {
 	return !IsPressed(keycode)
 }
 
-// * Key Just interaction
+// *Key Just interaction
 var previousPressedKeyState = map[int]bool{}
 
 func IsJustPressed(keycode int) bool {
