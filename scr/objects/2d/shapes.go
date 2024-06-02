@@ -24,20 +24,20 @@ func (shape Shape) DrawRectangle() {
 	gl.Color3f(shape.color.R, shape.color.G, shape.color.B)
 
 	// *Calculate vertices after rot
-	sinR := float32(math.Sin(float64(shape.transform.rot)))
-	cosR := float32(math.Cos(float64(shape.transform.rot)))
+	sinR := float32(math.Sin(float64(shape.transform.Rot)))
+	cosR := float32(math.Cos(float64(shape.transform.Rot)))
 
-	x0 := -0.5*shape.transform.size.X*cosR - -0.5*shape.transform.size.Y*sinR + shape.transform.pos.X
-	y0 := -0.5*shape.transform.size.X*sinR + -0.5*shape.transform.size.Y*cosR + shape.transform.pos.Y
+	x0 := -0.5*shape.transform.Size.X*cosR - -0.5*shape.transform.Size.Y*sinR + shape.transform.Pos.X
+	y0 := -0.5*shape.transform.Size.X*sinR + -0.5*shape.transform.Size.Y*cosR + shape.transform.Pos.Y
 
-	x1 := 0.5*shape.transform.size.X*cosR - -0.5*shape.transform.size.Y*sinR + shape.transform.pos.X
-	y1 := 0.5*shape.transform.size.X*sinR + -0.5*shape.transform.size.Y*cosR + shape.transform.pos.Y
+	x1 := 0.5*shape.transform.Size.X*cosR - -0.5*shape.transform.Size.Y*sinR + shape.transform.Pos.X
+	y1 := 0.5*shape.transform.Size.X*sinR + -0.5*shape.transform.Size.Y*cosR + shape.transform.Pos.Y
 
-	x2 := 0.5*shape.transform.size.X*cosR - 0.5*shape.transform.size.Y*sinR + shape.transform.pos.X
-	y2 := 0.5*shape.transform.size.X*sinR + 0.5*shape.transform.size.Y*cosR + shape.transform.pos.Y
+	x2 := 0.5*shape.transform.Size.X*cosR - 0.5*shape.transform.Size.Y*sinR + shape.transform.Pos.X
+	y2 := 0.5*shape.transform.Size.X*sinR + 0.5*shape.transform.Size.Y*cosR + shape.transform.Pos.Y
 
-	x3 := -0.5*shape.transform.size.X*cosR - 0.5*shape.transform.size.Y*sinR + shape.transform.pos.X
-	y3 := -0.5*shape.transform.size.X*sinR + 0.5*shape.transform.size.Y*cosR + shape.transform.pos.Y
+	x3 := -0.5*shape.transform.Size.X*cosR - 0.5*shape.transform.Size.Y*sinR + shape.transform.Pos.X
+	y3 := -0.5*shape.transform.Size.X*sinR + 0.5*shape.transform.Size.Y*cosR + shape.transform.Pos.Y
 
 	// *Draw vertices
 	gl.Vertex2f(x0, y0) // *Bottom-left
@@ -53,26 +53,26 @@ func (shape Shape) DrawTriangle(flip bool) {
 	gl.Color3f(shape.color.R, shape.color.G, shape.color.B)
 
 	// *Calculate vertices after rotation
-	sinR := float32(math.Sin(float64(shape.transform.rot)))
-	cosR := float32(math.Cos(float64(shape.transform.rot)))
+	sinR := float32(math.Sin(float64(shape.transform.Rot)))
+	cosR := float32(math.Cos(float64(shape.transform.Rot)))
 
-	x0 := shape.transform.pos.X
-	y0 := shape.transform.pos.Y + shape.transform.size.Y/2
+	x0 := shape.transform.Pos.X
+	y0 := shape.transform.Pos.Y + shape.transform.Size.Y/2
 
 	var x1, y1, x2, y2 float32
 
 	if flip {
-		x1 = shape.transform.pos.X - shape.transform.size.X/2*cosR + shape.transform.size.Y/2*sinR
-		y1 = shape.transform.pos.Y - shape.transform.size.X/2*sinR - shape.transform.size.Y/2*cosR
+		x1 = shape.transform.Pos.X - shape.transform.Size.X/2*cosR + shape.transform.Size.Y/2*sinR
+		y1 = shape.transform.Pos.Y - shape.transform.Size.X/2*sinR - shape.transform.Size.Y/2*cosR
 
-		x2 = shape.transform.pos.X + shape.transform.size.X/2*cosR + shape.transform.size.Y/2*sinR
-		y2 = shape.transform.pos.Y + shape.transform.size.X/2*sinR - shape.transform.size.Y/2*cosR
+		x2 = shape.transform.Pos.X + shape.transform.Size.X/2*cosR + shape.transform.Size.Y/2*sinR
+		y2 = shape.transform.Pos.Y + shape.transform.Size.X/2*sinR - shape.transform.Size.Y/2*cosR
 	} else {
-		x1 = shape.transform.pos.X + shape.transform.size.X/2*cosR - shape.transform.size.Y/2*sinR
-		y1 = shape.transform.pos.Y + shape.transform.size.X/2*sinR + shape.transform.size.Y/2*cosR
+		x1 = shape.transform.Pos.X + shape.transform.Size.X/2*cosR - shape.transform.Size.Y/2*sinR
+		y1 = shape.transform.Pos.Y + shape.transform.Size.X/2*sinR + shape.transform.Size.Y/2*cosR
 
-		x2 = shape.transform.pos.X - shape.transform.size.X/2*cosR - shape.transform.size.Y/2*sinR
-		y2 = shape.transform.pos.Y - shape.transform.size.X/2*sinR + shape.transform.size.Y/2*cosR
+		x2 = shape.transform.Pos.X - shape.transform.Size.X/2*cosR - shape.transform.Size.Y/2*sinR
+		y2 = shape.transform.Pos.Y - shape.transform.Size.X/2*sinR + shape.transform.Size.Y/2*cosR
 	}
 
 	// *Draw vertices
@@ -91,14 +91,14 @@ func (shape Shape) DrawCircle(segments int) {
 
 	// *Draw circle points
 	for i := 0; i < segments; i++ {
-		x := float32(math.Cos(float64(i)*theta)) * shape.transform.size.X / 2.0
-		y := float32(math.Sin(float64(i)*theta)) * shape.transform.size.Y / 2.0
+		x := float32(math.Cos(float64(i)*theta)) * shape.transform.Size.X / 2.0
+		y := float32(math.Sin(float64(i)*theta)) * shape.transform.Size.Y / 2.0
 
 		// *Apply position & rotation
-		cosR := float32(math.Cos(float64(shape.transform.rot)))
-		sinR := float32(math.Sin(float64(shape.transform.rot)))
-		rotatedX := x*cosR - y*sinR + shape.transform.pos.X
-		rotatedY := x*sinR + y*cosR + shape.transform.pos.Y
+		cosR := float32(math.Cos(float64(shape.transform.Rot)))
+		sinR := float32(math.Sin(float64(shape.transform.Rot)))
+		rotatedX := x*cosR - y*sinR + shape.transform.Pos.X
+		rotatedY := x*sinR + y*cosR + shape.transform.Pos.Y
 
 		gl.Vertex2f(rotatedX, rotatedY)
 	}
