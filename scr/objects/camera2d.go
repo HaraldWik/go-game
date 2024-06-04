@@ -12,11 +12,11 @@ type Camera2D struct {
 	zoom        float32
 }
 
-func NewCam() Camera2D {
+func NewCamera2D() Camera2D {
 	return Camera2D{}
 }
 
-func NewCamAdvanced(window win.Window, transform component.Transform2D, zoom float32) Camera2D {
+func NewCamera2DAdvanced(window win.Window, transform component.Transform2D, zoom float32) Camera2D {
 	return Camera2D{
 		window:      window,
 		Transform2D: transform,
