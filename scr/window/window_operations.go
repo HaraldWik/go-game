@@ -15,7 +15,7 @@ func (window *Window) Open() {
 	runtime.LockOSThread()
 
 	if err := sdl.Init(sdl.INIT_EVERYTHING); err != nil {
-		log.Fatalf(err_.FAILED_TO_INIT+"SDL: %v", err)
+		log.Fatalf(err_.FAILED_INIT+"SDL: %v", err)
 	}
 	defer runtime.UnlockOSThread()
 
@@ -27,7 +27,7 @@ func (window *Window) Open() {
 		window.flags,
 	)
 	if err != nil {
-		log.Fatalf(err_.FAILED_TO_INIT+"window: %v", err)
+		log.Fatalf(err_.FAILED_INIT+"window: %v", err)
 	}
 }
 

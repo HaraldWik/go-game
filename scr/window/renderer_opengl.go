@@ -12,7 +12,7 @@ import (
 func (window *Window) InitOpenGLRenderer() sdl.GLContext {
 	//* Initialize SDL video subsystem
 	if err := sdl.Init(sdl.INIT_VIDEO); err != nil {
-		log.Fatalln(err_.FAILED_TO_INIT+"SDL video:", err)
+		log.Fatalln(err_.FAILED_INIT+"SDL video:", err)
 	}
 
 	//* Set OpenGL attributes
@@ -23,12 +23,12 @@ func (window *Window) InitOpenGLRenderer() sdl.GLContext {
 	//* Create OpenGL context
 	glContext, err := window.SDL.GLCreateContext()
 	if err != nil {
-		log.Fatalln(err_.FAILED_TO_INIT+"OpenGL context for window:", err)
+		log.Fatalln(err_.FAILED_INIT+"OpenGL context for window:", err)
 	}
 
 	//* Initialize OpenGL
 	if err := gl.Init(); err != nil {
-		log.Fatalln(err_.FAILED_TO_INIT, "OpenGL", err)
+		log.Fatalln(err_.FAILED_INIT, "OpenGL", err)
 	}
 
 	//* Enable depth test

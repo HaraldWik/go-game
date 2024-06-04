@@ -1,22 +1,22 @@
-package vec4
+package vector4
 
 import "math"
 
-type Vector struct {
+type Type struct {
 	X, Y, Z, W float32
 }
 
-func New(vectorX, vectorY, vectorZ, vectorW float32) Vector {
-	return Vector{
-		X: vectorX,
-		Y: vectorY,
-		Z: vectorZ,
-		W: vectorW,
+func New(x, y, z, w float32) Type {
+	return Type{
+		X: x,
+		Y: y,
+		Z: z,
+		W: w,
 	}
 }
 
-func Zero() Vector {
-	return Vector{
+func Zero() Type {
+	return Type{
 		X: 0.0,
 		Y: 0.0,
 		Z: 0.0,
@@ -24,8 +24,8 @@ func Zero() Vector {
 	}
 }
 
-func All(number float32) Vector {
-	return Vector{
+func All(number float32) Type {
+	return Type{
 		X: number,
 		Y: number,
 		Z: number,
@@ -34,7 +34,7 @@ func All(number float32) Vector {
 }
 
 // *Addition
-func (origin Vector) Add(vectors ...Vector) Vector {
+func (origin Type) Add(vectors ...Type) Type {
 	for _, vector := range vectors {
 		origin.X += vector.X
 		origin.Y += vector.Y
@@ -45,7 +45,7 @@ func (origin Vector) Add(vectors ...Vector) Vector {
 }
 
 // *Subtraction
-func (origin Vector) Sub(vectors ...Vector) Vector {
+func (origin Type) Sub(vectors ...Type) Type {
 	for _, vector := range vectors {
 		origin.X -= vector.X
 		origin.Y -= vector.Y
@@ -56,7 +56,7 @@ func (origin Vector) Sub(vectors ...Vector) Vector {
 }
 
 // *Multiplication
-func (origin Vector) Mul(vectors ...Vector) Vector {
+func (origin Type) Mul(vectors ...Type) Type {
 	for _, vector := range vectors {
 		origin.X *= vector.X
 		origin.Y *= vector.Y
@@ -67,7 +67,7 @@ func (origin Vector) Mul(vectors ...Vector) Vector {
 }
 
 // *Divition
-func (origin Vector) Div(vectors ...Vector) Vector {
+func (origin Type) Div(vectors ...Type) Type {
 	for _, vector := range vectors {
 		origin.X *= vector.X
 		origin.Y *= vector.Y
@@ -78,7 +78,7 @@ func (origin Vector) Div(vectors ...Vector) Vector {
 }
 
 // *Absolut
-func (origin Vector) ABS() Vector {
+func (origin Type) ABS() Type {
 	return New(
 		float32(math.Abs(float64(origin.X))),
 		float32(math.Abs(float64(origin.Y))),
@@ -88,7 +88,7 @@ func (origin Vector) ABS() Vector {
 }
 
 // *Negativ
-func (origin Vector) Neg() Vector {
+func (origin Type) Neg() Type {
 	return New(
 		-float32(math.Abs(float64(origin.X))),
 		-float32(math.Abs(float64(origin.Y))),
@@ -98,7 +98,7 @@ func (origin Vector) Neg() Vector {
 }
 
 // *Length
-func (origin Vector) Length() float32 {
+func (origin Type) Length() float32 {
 	return float32(math.Sqrt(
 		float64(origin.X*origin.X) +
 			float64(origin.Y*origin.Y) +
@@ -108,7 +108,7 @@ func (origin Vector) Length() float32 {
 }
 
 // *Normalize
-func (origin Vector) Norm() Vector {
+func (origin Type) Norm() Type {
 	if origin.Length() != 0 {
 		return New(
 			origin.X/origin.Length(),

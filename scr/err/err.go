@@ -17,6 +17,6 @@ const (
 )
 
 const (
-	FAILED_TO_INIT   string = ERROR + "Failed to init:"
+	FAILED_INIT      string = ERROR + "Failed to init:"
 	NOT_DESIRED_TYPE string = WARNING + "Not a desired type"
 )

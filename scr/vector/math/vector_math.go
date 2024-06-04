@@ -2,59 +2,59 @@ package vec
 
 import (
 	"github.com/HaraldWik/go-game/scr/types"
-	vec2 "github.com/HaraldWik/go-game/scr/vector/2"
-	vec3 "github.com/HaraldWik/go-game/scr/vector/3"
-	vec4 "github.com/HaraldWik/go-game/scr/vector/4"
+	vector2 "github.com/HaraldWik/go-game/scr/vector/2"
+	vector3 "github.com/HaraldWik/go-game/scr/vector/3"
+	vector4 "github.com/HaraldWik/go-game/scr/vector/4"
 )
 
-func ToVec2(vector interface{}) vec2.Vector {
+func ToVector2(vector interface{}) vector2.Type {
 	switch vec := vector.(type) {
-	case vec2.Vector:
+	case vector2.Type:
 		return vec
-	case vec3.Vector:
-		return vec2.New(vector.(vec3.Vector).X, vector.(vec3.Vector).Y)
-	case vec4.Vector:
-		return vec2.New(vector.(vec4.Vector).X, vector.(vec4.Vector).Y)
+	case vector3.Type:
+		return vector2.New(vector.(vector3.Type).X, vector.(vector3.Type).Y)
+	case vector4.Type:
+		return vector2.New(vector.(vector4.Type).X, vector.(vector4.Type).Y)
 	default:
-		return vec2.Zero()
+		return vector2.Zero()
 	}
 }
 
-func ToVec3(vector interface{}) vec3.Vector {
+func ToVector3(vector interface{}) vector3.Type {
 	switch vec := vector.(type) {
-	case vec2.Vector:
-		return vec3.New(vector.(vec2.Vector).X, vector.(vec2.Vector).Y, 0.0)
-	case vec3.Vector:
+	case vector2.Type:
+		return vector3.New(vector.(vector2.Type).X, vector.(vector2.Type).Y, 0.0)
+	case vector3.Type:
 		return vec
-	case vec4.Vector:
-		return vec3.New(vector.(vec4.Vector).X, vector.(vec4.Vector).Y, vector.(vec4.Vector).Z)
+	case vector4.Type:
+		return vector3.New(vector.(vector4.Type).X, vector.(vector4.Type).Y, vector.(vector4.Type).Z)
 	default:
-		return vec3.Zero()
+		return vector3.Zero()
 	}
 }
 
-func ToVec4(vector interface{}) vec4.Vector {
+func ToVector4(vector interface{}) vector4.Type {
 	switch vec := vector.(type) {
-	case vec2.Vector:
-		return vec4.New(vector.(vec2.Vector).X, vector.(vec2.Vector).Y, 0.0, 0.0)
-	case vec3.Vector:
-		return vec4.New(vector.(vec3.Vector).X, vector.(vec3.Vector).Y, vector.(vec3.Vector).Z, 0.0)
-	case vec4.Vector:
+	case vector2.Type:
+		return vector4.New(vector.(vector2.Type).X, vector.(vector2.Type).Y, 0.0, 0.0)
+	case vector3.Type:
+		return vector4.New(vector.(vector3.Type).X, vector.(vector3.Type).Y, vector.(vector3.Type).Z, 0.0)
+	case vector4.Type:
 		return vec
 	default:
-		return vec4.Zero()
+		return vector4.Zero()
 	}
 }
 
-func Add(vector1 interface{}, vector2 interface{}) interface{} {
-	if types.AreSameType(true, vector1, vector2) {
-		switch types.GetType(vector1) {
-		case vec2.Vector{}:
-			return vector1.(vec2.Vector).Add(vector2.(vec2.Vector))
-		case vec3.Vector{}:
-			return vector1.(vec3.Vector).Add(vector2.(vec3.Vector))
-		case vec4.Vector{}:
-			return vector1.(vec4.Vector).Add(vector2.(vec4.Vector))
+func Add(first interface{}, second interface{}) interface{} {
+	if types.AreSameType(true, first, second) {
+		switch types.GetType(first) {
+		case vector2.Type{}:
+			return first.(vector2.Type).Add(second.(vector2.Type))
+		case vector3.Type{}:
+			return first.(vector3.Type).Add(second.(vector3.Type))
+		case vector4.Type{}:
+			return first.(vector4.Type).Add(second.(vector4.Type))
 		default:
 			return nil
 		}
@@ -63,15 +63,15 @@ func Add(vector1 interface{}, vector2 interface{}) interface{} {
 	}
 }
 
-func VecSub(vector1 interface{}, vector2 interface{}) interface{} {
-	if types.AreSameType(true, vector1, vector2) {
-		switch types.GetType(vector1) {
-		case vec2.Vector{}:
-			return vector1.(vec2.Vector).Sub(vector2.(vec2.Vector))
-		case vec3.Vector{}:
-			return vector1.(vec3.Vector).Sub(vector2.(vec3.Vector))
-		case vec4.Vector{}:
-			return vector1.(vec4.Vector).Sub(vector2.(vec4.Vector))
+func VecSub(first interface{}, second interface{}) interface{} {
+	if types.AreSameType(true, first, second) {
+		switch types.GetType(first) {
+		case vector2.Type{}:
+			return first.(vector2.Type).Sub(second.(vector2.Type))
+		case vector3.Type{}:
+			return first.(vector3.Type).Sub(second.(vector3.Type))
+		case vector4.Type{}:
+			return first.(vector4.Type).Sub(second.(vector4.Type))
 		default:
 			return nil
 		}
@@ -80,15 +80,15 @@ func VecSub(vector1 interface{}, vector2 interface{}) interface{} {
 	}
 }
 
-func VecMul(vector1 interface{}, vector2 interface{}) interface{} {
-	if types.AreSameType(true, vector1, vector2) {
-		switch types.GetType(vector1) {
-		case vec2.Vector{}:
-			return vector1.(vec2.Vector).Mul(vector2.(vec2.Vector))
-		case vec3.Vector{}:
-			return vector1.(vec3.Vector).Mul(vector2.(vec3.Vector))
-		case vec4.Vector{}:
-			return vector1.(vec4.Vector).Mul(vector2.(vec4.Vector))
+func VecMul(first interface{}, second interface{}) interface{} {
+	if types.AreSameType(true, first, second) {
+		switch types.GetType(first) {
+		case vector2.Type{}:
+			return first.(vector2.Type).Mul(second.(vector2.Type))
+		case vector3.Type{}:
+			return first.(vector3.Type).Mul(second.(vector3.Type))
+		case vector4.Type{}:
+			return first.(vector4.Type).Mul(second.(vector4.Type))
 		default:
 			return nil
 		}
@@ -97,15 +97,15 @@ func VecMul(vector1 interface{}, vector2 interface{}) interface{} {
 	}
 }
 
-func VecDiv(vector1 interface{}, vector2 interface{}) interface{} {
-	if types.AreSameType(true, vector1, vector2) {
-		switch types.GetType(vector1) {
-		case vec2.Vector{}:
-			return vector1.(vec2.Vector).Div(vector2.(vec2.Vector))
-		case vec3.Vector{}:
-			return vector1.(vec3.Vector).Div(vector2.(vec3.Vector))
-		case vec4.Vector{}:
-			return vector1.(vec4.Vector).Div(vector2.(vec4.Vector))
+func VecDiv(first interface{}, second interface{}) interface{} {
+	if types.AreSameType(true, first, second) {
+		switch types.GetType(first) {
+		case vector2.Type{}:
+			return first.(vector2.Type).Div(second.(vector2.Type))
+		case vector3.Type{}:
+			return first.(vector3.Type).Div(second.(vector3.Type))
+		case vector4.Type{}:
+			return first.(vector4.Type).Div(second.(vector4.Type))
 		default:
 			return nil
 		}
@@ -118,12 +118,12 @@ func VecDiv(vector1 interface{}, vector2 interface{}) interface{} {
 
 func ABS(vector interface{}) interface{} {
 	switch types.GetType(vector) {
-	case vec2.Vector{}:
-		return vector.(vec2.Vector).ABS()
-	case vec3.Vector{}:
-		return vector.(vec3.Vector).ABS()
-	case vec4.Vector{}:
-		return vector.(vec4.Vector).ABS()
+	case vector2.Type{}:
+		return vector.(vector2.Type).ABS()
+	case vector3.Type{}:
+		return vector.(vector3.Type).ABS()
+	case vector4.Type{}:
+		return vector.(vector4.Type).ABS()
 	default:
 		return nil
 	}
@@ -131,12 +131,12 @@ func ABS(vector interface{}) interface{} {
 
 func Neg(vector interface{}) interface{} {
 	switch types.GetType(vector) {
-	case vec2.Vector{}:
-		return vector.(vec2.Vector).Neg()
-	case vec3.Vector{}:
-		return vector.(vec3.Vector).Neg()
-	case vec4.Vector{}:
-		return vector.(vec4.Vector).Neg()
+	case vector2.Type{}:
+		return vector.(vector2.Type).Neg()
+	case vector3.Type{}:
+		return vector.(vector3.Type).Neg()
+	case vector4.Type{}:
+		return vector.(vector4.Type).Neg()
 	default:
 		return nil
 	}
@@ -144,12 +144,12 @@ func Neg(vector interface{}) interface{} {
 
 func Length(vector interface{}) interface{} {
 	switch types.GetType(vector) {
-	case vec2.Vector{}:
-		return vector.(vec2.Vector).Length()
-	case vec3.Vector{}:
-		return vector.(vec3.Vector).Length()
-	case vec4.Vector{}:
-		return vector.(vec4.Vector).Length()
+	case vector2.Type{}:
+		return vector.(vector2.Type).Length()
+	case vector3.Type{}:
+		return vector.(vector3.Type).Length()
+	case vector4.Type{}:
+		return vector.(vector4.Type).Length()
 	default:
 		return nil
 	}
@@ -157,12 +157,12 @@ func Length(vector interface{}) interface{} {
 
 func Norm(vector interface{}) interface{} {
 	switch types.GetType(vector) {
-	case vec2.Vector{}:
-		return vector.(vec2.Vector).Norm()
-	case vec3.Vector{}:
-		return vector.(vec3.Vector).Norm()
-	case vec4.Vector{}:
-		return vector.(vec4.Vector).Norm()
+	case vector2.Type{}:
+		return vector.(vector2.Type).Norm()
+	case vector3.Type{}:
+		return vector.(vector3.Type).Norm()
+	case vector4.Type{}:
+		return vector.(vector4.Type).Norm()
 	default:
 		return nil
 	}

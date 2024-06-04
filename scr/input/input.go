@@ -10,22 +10,22 @@ func GetPressedKeys() []int {
 	switch runtime.GOOS {
 	case "windows":
 		user32 := syscall.NewLazyDLL("user32.dll")
-		keyboard := user32.NewProc("GetAsyncKeyState")
+		keyboard := user32.NewProc("GetAsyncKey")
 
-		getKeyState := func(key int) uint16 {
+		getKey := func(key int) uint16 {
 			result, _, _ := keyboard.Call(uintptr(key))
 			return uint16(result)
 		}
 
 		var pressedKeys []int
 		for keycode := 0; keycode < 256; keycode++ {
-			if result := getKeyState(keycode); result != 0 {
+			if result := getKey(keycode); result != 0 {
 				pressedKeys = append(pressedKeys, keycode)
 			}
 		}
 		return pressedKeys
 	case "darwin", "linux":
-		// !No support for your OS
+		// !No support for MacOS & Linux yeet!
 		return nil
 	default:
 		return nil
@@ -48,22 +48,22 @@ func IsReleased(keycode int) bool {
 }
 
 // *Key Just interaction
-var previousPressedKeyState = map[int]bool{}
+var previousPressed = map[int]bool{}
 
 func IsJustPressed(keycode int) bool {
-	currentState := IsPressed(keycode)
-	pressed := currentState && !previousPressedKeyState[keycode]
-	previousPressedKeyState[keycode] = currentState
+	current := IsPressed(keycode)
+	pressed := current && !previousPressed[keycode]
+	previousPressed[keycode] = current
 
 	return pressed
 }
 
-var previousReleasedKeyState = map[int]bool{}
+var previousReleased = map[int]bool{}
 
 func IsJustReleased(keycode int) bool {
-	currentState := IsPressed(keycode) && !IsJustPressed(keycode)
-	released := !currentState && previousReleasedKeyState[keycode]
-	previousReleasedKeyState[keycode] = currentState
+	current := IsPressed(keycode) && !IsJustPressed(keycode)
+	released := !current && previousReleased[keycode]
+	previousReleased[keycode] = current
 
 	return released
 }

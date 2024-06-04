@@ -45,12 +45,12 @@ func GetType(variable interface{}) interface{} {
 		return float64(0)
 	case string:
 		return ""
-	case vec2.Vector:
-		return vec2.Vector{}
-	case vec3.Vector:
-		return vec3.Vector{}
-	case vec4.Vector:
-		return vec4.Vector{}
+	case vec2.Type:
+		return vec2.Type{}
+	case vec3.Type:
+		return vec3.Type{}
+	case vec4.Type:
+		return vec4.Type{}
 	default:
 		return nil
 	}
