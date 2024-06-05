@@ -72,6 +72,33 @@ func (original Type) Div(vectors ...Type) Type {
 	return original
 }
 
+// *Scale
+func (original Type) Scale(scalar float32) Type {
+	return New(
+		original.X*scalar,
+		original.Y*scalar,
+		original.Z*scalar,
+	)
+}
+
+// *Dot product
+func (original Type) Dot(other Type) float32 {
+	return float32(
+		original.X*other.X +
+			original.Y*other.Y +
+			original.Z*other.Z,
+	)
+}
+
+// *Cross product
+func (original Type) Cross(other Type) Type {
+	return New(
+		original.Y*other.Z-original.Z*other.Y,
+		original.Z*other.X-original.X*other.Z,
+		original.X*other.Y-original.Y*other.X,
+	)
+}
+
 // *Absolut
 func (original Type) ABS() Type {
 	return New(
@@ -110,31 +137,4 @@ func (original Type) Norm() Type {
 	} else {
 		return Zero()
 	}
-}
-
-// *Scale
-func (original Type) Scale(scalar float32) Type {
-	return New(
-		original.X*scalar,
-		original.Y*scalar,
-		original.Z*scalar,
-	)
-}
-
-// *Dot product
-func (original Type) Dot(other Type) float32 {
-	return float32(
-		original.X*other.X +
-			original.Y*other.Y +
-			original.Z*other.Z,
-	)
-}
-
-// *Cross product
-func (original Type) Cross(other Type) Type {
-	return New(
-		original.Y*other.Z-original.Z*other.Y,
-		original.Z*other.X-original.X*other.Z,
-		original.X*other.Y-original.Y*other.X,
-	)
 }

@@ -114,7 +114,47 @@ func VecDiv(first interface{}, second interface{}) interface{} {
 	}
 }
 
-////////////////////////////////////////////////////////////////////////////////
+// *Scale
+func Scale(first interface{}, scalar float32) interface{} {
+	switch types.GetType(first) {
+	case vector2.Type{}:
+		return first.(vector2.Type).Scale(scalar)
+	case vector3.Type{}:
+		return first.(vector3.Type).Scale(scalar)
+	case vector4.Type{}:
+		return first.(vector4.Type).Scale(scalar)
+	default:
+		return nil
+	}
+}
+
+// *Dot product
+func Dot(first interface{}, second interface{}) float32 {
+	switch types.GetType(first) {
+	case vector2.Type{}:
+		return first.(vector2.Type).Dot(second.(vector2.Type))
+	case vector3.Type{}:
+		return first.(vector3.Type).Dot(second.(vector3.Type))
+	case vector4.Type{}:
+		return first.(vector4.Type).Dot(second.(vector4.Type))
+	default:
+		return 0
+	}
+}
+
+// *Cross product
+func Cross(first interface{}, second interface{}) interface{} {
+	switch types.GetType(first) {
+	case vector2.Type{}:
+		return first.(vector2.Type).Cross(second.(vector2.Type))
+	case vector3.Type{}:
+		return first.(vector3.Type).Cross(second.(vector3.Type))
+	case vector4.Type{}:
+		return first.(vector4.Type).Cross(second.(vector4.Type))
+	default:
+		return nil
+	}
+}
 
 func ABS(vector interface{}) interface{} {
 	switch types.GetType(vector) {
