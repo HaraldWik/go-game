@@ -3,6 +3,8 @@ package input
 import (
 	"runtime"
 	"syscall"
+
+	err_ "github.com/HaraldWik/go-game/scr/err"
 )
 
 // *Get array of all pressed keys
@@ -10,10 +12,10 @@ func GetPressedKeys() []int {
 	switch runtime.GOOS {
 	case "windows":
 		user32 := syscall.NewLazyDLL("user32.dll")
-		keyboard := user32.NewProc("GetAsyncKey")
+		procGetAsyncKeyState := user32.NewProc("GetAsyncKeyState")
 
 		getKey := func(key int) uint16 {
-			result, _, _ := keyboard.Call(uintptr(key))
+			result, _, _ := procGetAsyncKeyState.Call(uintptr(key))
 			return uint16(result)
 		}
 
@@ -23,9 +25,11 @@ func GetPressedKeys() []int {
 				pressedKeys = append(pressedKeys, keycode)
 			}
 		}
+
 		return pressedKeys
 	case "darwin", "linux":
-		// !No support for MacOS & Linux yeet!
+		println(err_.WARNING + "No input support for MacOS & Linux! *COMING SOON*")
+		// !No support for MacOS & Linux yet! *COMING SOON*
 		return nil
 	default:
 		return nil
