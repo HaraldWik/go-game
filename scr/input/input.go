@@ -48,7 +48,7 @@ func IsPressed(keycode int) bool {
 }
 
 func IsReleased(keycode int) bool {
-	return !IsPressed(keycode)
+	return !IsPressed(keycode) && IsJustPressed(keycode)
 }
 
 // *Key Just interaction

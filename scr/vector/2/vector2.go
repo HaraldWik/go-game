@@ -28,73 +28,97 @@ func All(number float32) Type {
 }
 
 // *Addition
-func (origin Type) Add(vectors ...Type) Type {
+func (original Type) Add(vectors ...Type) Type {
 	for _, vector := range vectors {
-		origin.X += vector.X
-		origin.Y += vector.Y
+		original.X += vector.X
+		original.Y += vector.Y
 	}
-	return origin
+	return original
 }
 
 // *Subtraction
-func (origin Type) Sub(vectors ...Type) Type {
+func (original Type) Sub(vectors ...Type) Type {
 	for _, vector := range vectors {
-		origin.X -= vector.X
-		origin.Y -= vector.Y
+		original.X -= vector.X
+		original.Y -= vector.Y
 	}
-	return origin
+	return original
 }
 
 // *Multiplication
-func (origin Type) Mul(vectors ...Type) Type {
+func (original Type) Mul(vectors ...Type) Type {
 	for _, vector := range vectors {
-		origin.X *= vector.X
-		origin.Y *= vector.Y
+		original.X *= vector.X
+		original.Y *= vector.Y
 	}
-	return origin
+	return original
 }
 
 // *Divition
-func (origin Type) Div(vectors ...Type) Type {
+func (original Type) Div(vectors ...Type) Type {
 	for _, vector := range vectors {
-		origin.X *= vector.X
-		origin.Y *= vector.Y
+		original.X *= vector.X
+		original.Y *= vector.Y
 	}
-	return origin
+	return original
 }
 
 // *Absolut
-func (origin Type) ABS() Type {
+func (original Type) ABS() Type {
 	return New(
-		float32(math.Abs(float64(origin.X))),
-		float32(math.Abs(float64(origin.Y))),
+		float32(math.Abs(float64(original.X))),
+		float32(math.Abs(float64(original.Y))),
 	)
 }
 
 // *Negativ
-func (origin Type) Neg() Type {
+func (original Type) Neg() Type {
 	return New(
-		-float32(math.Abs(float64(origin.X))),
-		-float32(math.Abs(float64(origin.Y))),
+		-float32(math.Abs(float64(original.X))),
+		-float32(math.Abs(float64(original.Y))),
 	)
 }
 
 // *Length
-func (origin Type) Length() float32 {
+func (original Type) Length() float32 {
 	return float32(math.Sqrt(
-		float64(origin.X*origin.X) +
-			float64(origin.Y*origin.Y)),
+		float64(original.X*original.X) +
+			float64(original.Y*original.Y)),
 	)
 }
 
 // *Normalize
-func (origin Type) Norm() Type {
-	if origin.Length() != 0 {
+func (original Type) Norm() Type {
+	if original.Length() != 0 {
 		return New(
-			origin.X/origin.Length(),
-			origin.Y/origin.Length(),
+			original.X/original.Length(),
+			original.Y/original.Length(),
 		)
 	} else {
 		return Zero()
 	}
+}
+
+// *Scale
+func (original Type) Scale(scalar float32) Type {
+	return New(
+		original.X*scalar,
+		original.Y*scalar,
+	)
+}
+
+// *Dot product
+func (original Type) Dot(other Type) float32 {
+	return float32(
+		original.X*other.X +
+			original.Y*other.Y,
+	)
+}
+
+// *Cross product
+func (original Type) Cross(other Type) Type {
+	return New(
+		original.X*other.Y-original.Y*other.X,
+		original.X*other.Y-original.Y*other.X,
+	)
 }
