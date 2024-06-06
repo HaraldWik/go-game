@@ -37,3 +37,11 @@ func (window *Window) InitOpenGLRenderer() sdl.GLContext {
 
 	return glContext
 }
+
+func (window Window) BeginDrawOpenGL() {
+	gl.Clear(gl.COLOR_BUFFER_BIT | gl.DEPTH_BUFFER_BIT)
+}
+
+func (window Window) EndDrawOpenGL() {
+	window.SDL.GLSwap()
+}
